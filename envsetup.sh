@@ -53,6 +53,14 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
+
+    if (echo -n $1 | grep -q -e "^classic_") ; then
+        CLASSIC_BUILD=$(echo -n $1 | sed -e 's/^classic_//g')
+    else
+        CLASSIC_BUILD=
+    fi
+    export CLASSIC_BUILD
+
     CALLED_FROM_SETUP=true BUILD_SYSTEM=build/core \
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
