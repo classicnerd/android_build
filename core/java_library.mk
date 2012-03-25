@@ -90,7 +90,7 @@ $(built_odex) : $(DEXPREOPT_BOOT_ODEXS)
 $(built_odex) : $(common_javalib.jar) | $(DEXPREOPT) $(DEXOPT)
 	@echo "Dexpreopt Jar: $(PRIVATE_MODULE) ($@)"
 	$(hide) rm -f $@
-        @mkdir  -p $(dir $@)
+	@mkdir  -p $(dir $@)
 	$(call dexpreopt-one-file,$<,$@)
 
 $(LOCAL_BUILT_MODULE) : $(common_javalib.jar) | $(ACP) $(AAPT)
