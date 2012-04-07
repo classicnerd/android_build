@@ -408,7 +408,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   AppendAssertions(script, input_zip)
   device_specific.FullOTA_Assertions()
 
-# MOTD during flash added for Evervolv by cocide
+# Comments during install added for Classicnerd by Leoisright
   if (OPTIONS.motd != None):
     eachRawMotd = OPTIONS.motd.split("\\n")
     for eachMotd in eachRawMotd:
@@ -433,20 +433,20 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.ShowProgress(0.5, 0)
 
   if OPTIONS.wipe_user_data:
-# Comments during install added for Evervolv by cocide
+# Comments during install added for Classicnerd by Leoisright
     script.Print("Wiping user data")
     script.FormatPartition("/data")
 
-# Comments during install added for Evervolv by cocide
+# Comments during install added for Classicnerd by Leoisright
   script.Print("Formatting system")
   script.FormatPartition("/system")
   script.Mount("/system")
   #script.UnpackPackageDir("recovery", "/system")
-# Comments during install added for Evervolv by cocide
-  script.Print("Installing Evervolv")
+# Comments during install added for Classicnerd by Leoisright
+  script.Print("Installing Classicnerd")
   script.UnpackPackageDir("system", "/system")
 
-# Comments during install added for Evervolv by cocide
+# Comments during install added for Classicnerd by Leoisright
   script.Print("Creating symlinks")
   (symlinks, retouch_files) = CopySystemFiles(input_zip, output_zip)
   script.MakeSymlinks(symlinks)
@@ -462,7 +462,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   #MakeRecoveryPatch(output_zip, recovery_img, boot_img)
 
   Item.GetMetadata(input_zip)
-# Comments during install added for Evervolv by cocide
+# Comments during install added for Classicnerd by Leoisright
   script.Print("Setting permissions")
   Item.Get("system").SetPermissions(script)
 
