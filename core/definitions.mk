@@ -962,7 +962,7 @@ endef
 
 define transform-host-cpp-to-o
 @mkdir -p $(dir $@)
-@echo "host C++: $(PRIVATE_MODULE) <= $<"
+@echo -e ${CL_PFX}"host C++:"${CL_RST}" $(PRIVATE_MODULE) <= $<"
 $(hide) $(PRIVATE_CXX) \
 	$(addprefix -I , $(PRIVATE_C_INCLUDES)) \
 	$(addprefix -isystem ,\
@@ -1008,7 +1008,7 @@ $(hide) $(PRIVATE_CC) \
 endef
 
 define transform-host-c-to-o-no-deps
-@echo "host C: $(PRIVATE_MODULE) <= $<"
+@echo -e ${CL_PFX}"host C:"${CL_RST}" $(PRIVATE_MODULE) <= $<"
 $(call transform-host-c-or-s-to-o-no-deps, )
 endef
 
@@ -1522,7 +1522,7 @@ endef
 #      only core.jar and framework.jar need a heap this big.
 # Avoid the memory arguments on Windows, dx fails to load for some reason with them.
 define transform-classes.jar-to-dex
-@echo "target Dex: $(PRIVATE_MODULE)"
+@echo -e ${CL_PFX}"target Dex:"${CL_RST}" $(PRIVATE_MODULE)"
 @mkdir -p $(dir $@)
 $(hide) $(DX) \
     $(if $(findstring windows,$(HOST_OS)),,-JXms16M -JXmx1536M) \
@@ -2013,3 +2013,4 @@ include $(BUILD_SYSTEM)/user_tags.mk
 #	  sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
 #	      -e '/^$$/ d' -e 's/$$/ :/' < $*.d >> $*.P; \
 #	  rm -f $*.d
+
