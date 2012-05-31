@@ -21,7 +21,7 @@ repositories = []
 
 page = 1
 while not depsonly:
-    result = json.loads(urllib2.urlopen("http://github.com/api/v2/json/repos/show/CLassicnerd?page=%d" % page).read())
+    result = json.loads(urllib2.urlopen("http://github.com/api/v2/json/repos/show/Classicnerd?page=%d" % page).read())
     if len(result['repositories']) == 0:
         break
     repositories = repositories + result['repositories']
